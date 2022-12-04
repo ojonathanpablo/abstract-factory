@@ -1,28 +1,24 @@
 package entids;
 
 public class SugestaoGame {
-    private Esportes gameEsporte;
-    private Rpg gameRpg;
+	private Esportes gameEsporte;
+	private Rpg gameRpg;
+	private Modelo fabricaModelo;
 
-    public Esportes getGameEsporte() {
-        return gameEsporte;
-    }
+	public SugestaoGame(Modelo fabrica) {
+		fabricaModelo = fabrica;
+	}
 
-    public Rpg getGameRpg() {
-        return gameRpg;
-    }
-    
-    public void gerar(byte opc)
-    {
-        if(opc == 1)
-        {
-            gameEsporte = new Fifa();
-            gameRpg = new EldenRing();
-        }
-        else
-        {
-            gameEsporte = new WiningEleven();
-            gameRpg = new Zelda();
-        }
-    }
-  }       
+	public Esportes getGameEsporte() {
+		return gameEsporte;
+	}
+
+	public Rpg getGameRpg() {
+		return gameRpg;
+	}
+
+	public void gerar() {
+		gameEsporte = fabricaModelo.getEsportes();
+		gameRpg = fabricaModelo.getRpg();
+	}
+}

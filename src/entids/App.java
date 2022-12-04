@@ -9,8 +9,18 @@ public class App {
 		System.out.println("Informe 1-Games Antigos ou 2-Games novos");
 		byte opc = sc.nextByte();
 
-		SugestaoGame sugestao = new SugestaoGame();
-		sugestao.gerar(opc);
+		Modelo modelo = null;
+		switch (opc) {
+		case 1:
+			modelo = new FabricaAntigos();
+			break;
+		case 2:
+			modelo = new FabricaNovos();
+			break;
+		}
+
+		SugestaoGame sugestao = new SugestaoGame(modelo);
+		sugestao.gerar();
 
 		System.out.println("Esportes: " + sugestao.getGameEsporte().toString());
 		System.out.println("Rpg: " + sugestao.getGameRpg().toString());
